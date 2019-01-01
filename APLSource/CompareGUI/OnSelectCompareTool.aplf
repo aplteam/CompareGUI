@@ -1,0 +1,7 @@
+ OnSelectCompareTool←{
+     rf←0⊃⍵
+     ind←n.(BeyondCompare CompareIt)⍳rf
+     (ind⊃n.(CompareIt BeyondCompare)).Checked←0
+     (n.(CompareIt BeyondCompare)~ind⊃n.(CompareIt BeyondCompare)).Checked←1
+     ⍬
+ }

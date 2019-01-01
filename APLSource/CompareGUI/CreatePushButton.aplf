@@ -1,0 +1,21 @@
+ CreatePushButton←{
+     n←⍵
+     ∆←''
+     ∆,←⊂'Size'(⍬ 100)
+     ∆,←⊂'Caption' 'OK'
+     ∆,←⊂'Default' 1
+     ∆,←⊂'Event'(9999 1)
+     n.okay←n.theForm.⎕NEW'Button'∆
+     n.okay.Posn←(n.theForm.Size[0]-n.okay.Size[0]+30),10
+     _←n.okay.⎕DF'OK'
+
+     ∆←''
+     ∆,←⊂'Size'(⍬ 100)
+     ∆,←⊂'Caption' 'Cancel'
+     ∆,←⊂'Cancel' 1
+     ∆,←⊂'Event'(9998 1)
+     n.cancel←n.theForm.⎕NEW'Button'∆
+     n.cancel.Posn←n.theForm.Size-n.okay.Size+30 10
+     _←n.okay.⎕DF'CANCEL'
+     n
+ }

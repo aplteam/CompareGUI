@@ -1,0 +1,16 @@
+ ref←ProcessPaths dummy;ref
+ :If 0 0≡↑∘⍴¨G.(path1 path2)                    ⍝ Both pathes empty?
+     ref←⍎'HoldWorkspaces'⎕SE.⎕NS''
+ :Else
+     :If 0=⎕SE.⎕NC'HoldWorkspaces'              ⍝ Container does not exist yet
+         ref←⍎'HoldWorkspaces'⎕SE.⎕NS''         ⍝ Then we create it.
+     :Else
+         ref←⎕SE.HoldWorkspaces                 ⍝ Already there, so we point at it
+     :EndIf
+     :If ~0∊⍴G.path1                            ⍝ Empty means: use what we already got
+         ⎕SE.HoldWorkspaces.⎕EX G.nickname1     ⍝ Delete leftovers
+     :EndIf
+     :If ~0∊⍴G.path2
+         ⎕SE.HoldWorkspaces.⎕EX G.nickname2     ⍝ Delete leftovers
+     :EndIf
+ :EndIf

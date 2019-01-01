@@ -1,0 +1,10 @@
+ {r}←TellIncompatibleVersion path;msg
+ r←⍬
+ #.CursorObj←0
+ msg←''
+ msg,←⊂'The workspace:'
+ msg,←⊂'  ',path
+ msg,←⊂'was saved with a later version of Dyalog and'
+ msg,←⊂'can therefore not be processed!'
+ ShowMsg msg n.theForm
+⍝Done

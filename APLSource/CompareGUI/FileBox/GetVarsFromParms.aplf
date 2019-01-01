@@ -1,0 +1,19 @@
+ R←GetVarsFromParms Parms;∆DUMMY;⎕IO;⎕ML
+⍝⍝ Takes parameters like
+⍝⍝     ('NEW' true) ('CAPTION' 'A Title')
+⍝⍝ and create variables ∆NEW and ∆CAPTION from this.
+⍝S The parameter vars are created in the namespace, where GetVarsFromParms
+⍝S was called from or, if "CalledFromNamespace" was specified, within this
+⍝S specified Namespace.
+⍝S R is a list of the created variable names.
+⍝S R is an empty vector, if the operation fails.
+⍝I Parameters, get vars from;
+⍝C Copyright APL Team Ltd ⋄ http://www.aplteam.de ⋄ mailto:kai@aplteam.com
+⍝V Version: 3.2.1
+ ⎕IO←1
+ ⎕ML←3
+ R←''
+ Parms⍪←'DUMMY'⍬                    ⍝ DUMMY is added to make the statement run if Parms is empty.
+ Parms[;1]←'∆',¨Parms[;1]           ⍝ Add "∆" to avoid name conflicts.
+ ⍎(↑,/' ',¨Parms[;1]),'←Parms[;2]'  ⍝ Create external parameters.
+ R←¯1↓Parms[;1]                     ⍝ ¯1↓ drops the DUMMY.

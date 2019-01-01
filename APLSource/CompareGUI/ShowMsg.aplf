@@ -1,0 +1,11 @@
+ {r}←{caption}ShowMsg(msg parent);∆;ms
+ r←⍬
+ caption←'Compare workspaces'{0<⎕NC ⍵:⍺,': ',⍎⍵ ⋄ ⍺}'caption'
+ ∆←⊂'MsgBox'
+ ∆,←⊂caption
+ msg←{↑,/(⎕UCS 10),¨⍵}⍣(|2=≡msg)⊣msg
+ ∆,←⊂'Text'msg
+ ∆,←⊂'Style' 'Info'
+ ∆,←⊂'Event'('MsgBtn1')1
+ 'ms'parent.⎕WC ∆
+ {}parent.⎕DQ'ms'

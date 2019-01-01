@@ -1,0 +1,7 @@
+ OnSelectCopy←{
+     no←⍺
+     txt←⍎'n.path',no,'.Text'
+     rf←⍎'n.nickname',no
+     rf.Text←GetWsidFrom txt
+     ⍬
+ }

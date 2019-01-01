@@ -1,0 +1,4 @@
+ OnCancel←{
+     ⎕THIS.∆CANCEL←1
+     {0}⎕NQ(0⊃⍵)9998             ⍝ All is fine, so let's quit ⎕DQ
+ }

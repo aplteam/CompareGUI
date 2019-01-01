@@ -1,0 +1,30 @@
+ success←CopyWorkspaces ref;into
+ success←1
+ :If 0∊⍴G.path1
+     into←⍎'⎕SE.HoldWorkspaces.',G.nickname1
+ :Else
+     into←⍎G.nickname1 ref.⎕NS''
+     n.info.Text←'Copying first workspace...'
+     :Trap 11
+         into.⎕CY G.path1
+     :Case 11
+         TellIncompatibleVersion G.path1
+         success←0
+         →∆End
+     :EndTrap
+ :EndIf
+
+ :If 0∊⍴G.path2
+     into←⍎'⎕SE.HoldWorkspaces.',G.nickname2
+ :Else
+     into←⍎G.nickname2 ref.⎕NS''
+     n.info.Text←'Copying second workspace...'
+     :Trap 11
+         into.⎕CY G.path2
+     :Case 11
+         TellIncompatibleVersion G.path2
+         success←0
+     :EndTrap
+ :EndIf
+
+∆End:

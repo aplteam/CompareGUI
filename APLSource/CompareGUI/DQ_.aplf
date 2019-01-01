@@ -1,0 +1,16 @@
+ res←focusTo DQ_ name;flag;buff
+⍝ Returns 1 for "OK" and 0 for "Cancel"
+ flag←res←0
+ :Repeat
+     :Trap 12
+         ⎕NQ focusTo'GotFocus' ⋄ buff←⎕DQ name
+         :If ~0∊⍴buff
+             res←9999=1⊃buff
+         :EndIf
+         flag←1
+     :Else
+        ⍝ We are suffering from spourious SYNTAX ERRORs in ⎕DQ which are
+        ⍝ related to moving the mouse but withour apparent reason.
+        ⍝ Therefore we trap those - not ideal but it's not reproducible.
+     :EndTrap
+ :Until flag

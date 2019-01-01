@@ -1,0 +1,11 @@
+ OnDefinePath←{
+⍝ Allow the user to select a workspace
+     no←⍺
+     p←(no-1)⊃n.(path1 path2)
+     c←'Workspace ',⍕no
+     path←GetWorkspaceName p.Text c
+     0∊⍴path:0
+     p.Items←{(10⌊⍴⍵)↑⍵}∪(⊂path),p.Items  ⍝ Max 10 entries
+     p.SelItems←(⍴p.Items)↑1
+     0
+ }

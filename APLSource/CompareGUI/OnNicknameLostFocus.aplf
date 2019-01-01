@@ -1,0 +1,6 @@
+ OnNicknameLostFocus←{
+⍝ Make sure that the text in ⍵ is deselected
+     rf←0⊃⍵
+     rf.SelText←1 1
+     1
+ }

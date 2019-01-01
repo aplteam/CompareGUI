@@ -1,0 +1,19 @@
+ n←CreatGui G;∆;f1;f2
+ ∆OK←∆CANCEL←0
+ n←⎕NS''
+ #.CursorObj←0
+
+ n←CreateForm n
+ n←CreateMenu n
+ n←CreateGroup n 0 '1'
+ n←CreateGroup n 100 '2'
+ n←CreatePushButton n
+
+ n.(nickname1 nickname2 path1 path2).onGotFocus←⊂'OnNicknameGotFocus'
+ n.(nickname1 nickname2 path1 path2).onLostFocus←⊂'OnNicknameLostFocus'
+ n.btn1.onSelect←'OnDefinePath' 1
+ n.btn2.onSelect←'OnDefinePath' 2
+ n.okay.onSelect←'OnOkay'
+ n.cancel.onSelect←'OnCancel'
+ n.(path1 path2).onDropFiles←⊂'OnDragDropWorkspace'
+⍝Done

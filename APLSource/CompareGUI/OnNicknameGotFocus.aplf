@@ -1,0 +1,6 @@
+ OnNicknameGotFocus←{
+⍝ Make sure that the text in ⍵ is preselected
+     rf←0⊃⍵
+     rf.SelText←1,1+⍴,rf.Text
+     1
+ }

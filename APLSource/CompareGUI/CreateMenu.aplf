@@ -1,0 +1,28 @@
+ CreateMenu←{
+     n←⍵
+     n.MB←n.theForm.⎕NEW⊂'MenuBar'
+
+     n.CompareMenu←n.MB.⎕NEW'Menu'(,⊂'Caption' 'Options')
+
+     ∆←''
+     ∆,←⊂'Caption' 'Compare with "CompareIt"'
+     f1←~0∊⍴{0::⍬ ⋄ ##.CompareSimple.FindCompareIt ⍵}0
+     ∆,←⊂'Active'f1
+     ∆,←⊂'Checked'f1
+     _←n.CompareIt←n.CompareMenu.⎕NEW'MenuItem'∆
+     n.CompareIt.onSelect←'OnSelectCompareTool'
+
+     ∆←''
+     ∆,←⊂'Caption' 'Compare with "Beyond Compare"'
+     f2←~0∊⍴{0::⍬ ⋄ ##.CompareSimple.FindBeyondCompare ⍵}0
+     ∆,←⊂'Active'f2
+     ∆,←⊂'Checked'(f2∧~f1)
+     _←n.BeyondCompare←n.CompareMenu.⎕NEW'MenuItem'∆
+     n.BeyondCompare.onSelect←'OnSelectCompareTool'
+
+     n.helpMenu←n.MB.⎕NEW'Menu'(,⊂'Caption' '&Help')
+
+     _←n.about←n.helpMenu.⎕NEW'MenuItem'(,⊂'Caption' 'About')
+     n.about.onSelect←'OnAbout'
+     n
+ }

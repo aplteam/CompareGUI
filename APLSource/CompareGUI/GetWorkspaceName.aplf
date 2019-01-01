@@ -1,0 +1,9 @@
+ GetWorkspaceName←{
+     (f c)←⍵                ⍝ Filename (for pre-selection) and Caption
+     p←''
+     p,←⊂'Caption'('Compare Workspaces: Select WS for "',c,'"')
+     p,←⊂'Filters' '*.DWS;Workspaces'
+     (rc more file)←p FileBox.Select f
+     ¯1≡rc:⍬
+     file
+ }

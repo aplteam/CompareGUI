@@ -1,0 +1,6 @@
+ GetWsidFrom←{
+     txt←⍵
+     p←1⊃##.APLTreeUtils.SplitPath txt
+     (~'.'∊p):p
+     0⊃'.'##.APLTreeUtils.Split p
+ }

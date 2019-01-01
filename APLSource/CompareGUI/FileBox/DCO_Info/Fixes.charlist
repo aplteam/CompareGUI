@@ -1,0 +1,13 @@
+*** Version 1.8.1 from 13.08.2011  (Kai Jaeger)
+- GetVarsFromParms does not deal with "CalledFromSpace" (User Command compatability)
+*** Version 1.5.1 from 01.09.2003  (Kai Jaeger)
+- If "Style" was "Mutli", and the default path was changed, tis
+path was handled the wrong way.
+*** Version 1.4.1 from 17.10.2002  (Kai Jaeger)
+- Helpfile was not listed in the DCO.
+*** Version 1.3.4 from 04.08.2001  (Kai Jaeger)
+- Minor improvement in documentation.
+*** Version 1.3.3 from 21.05.2001  (Kai Jaeger)
+- New version of "Uppercase" and "Lowercase".
+*** Version 1.3.2 from 09.05.2001  (Kai Jaeger)
+- There was a bug in both "Uppercase" and Lowercase".

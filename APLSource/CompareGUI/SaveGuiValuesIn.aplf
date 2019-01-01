@@ -1,0 +1,10 @@
+ SaveGuiValuesIn←{
+⍝ Take values from the GUI and save them in ⍵
+     (n r)←⍵        ⍝ Names and G
+     r.nickname1←'_',n.nickname1.Text
+     r.nickname2←'_',n.nickname2.Text
+     r.path1←n.path1.Text
+     r.path2←n.path2.Text
+     r.posn←n.theForm.Posn
+     r
+ }

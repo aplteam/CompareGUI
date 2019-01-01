@@ -1,0 +1,31 @@
+ CreateForm←{
+     n←⍵
+     ∆←''
+     ∆,←⊂'Coord' 'Pixel'
+     ∆,←⊂'Posn'(⍬ ⍬)
+     ∆,←⊂'Size'(265 700)
+     ∆,←⊂'MaxButton' 0
+     ∆,←⊂'Caption' 'Compare / merge workspaces'
+     ∆,←⊂'Sizeable' 0
+     n.theForm←⎕NEW'Form'∆
+
+     n.theForm.FontObj←⍎'DefaultFnt'⎕WC'Font' 'MS Sans Serif'
+
+     n.SB←n.theForm.⎕NEW'Statusbar'(,⊂'Coord' 'Pixel')
+
+     n.info←n.SB.⎕NEW'StatusField'(,⊂'Size'(⍬(n.theForm.Size[1]-60)))
+
+     ∆←''
+     ∆,←⊂'Size'(⍬ 45)
+     ∆,←⊂'Text'({⍵/⍨2≥+\'.'=⍵}1⊃Version)
+     n.version←n.SB.⎕NEW'StatusField'∆
+
+     n.fnt←⎕NEW'Font'(('PName' 'Courier New')('Size' 16))
+     n.fnt2←⎕NEW'Font'(,⊂'PName' 'MS Sans Serif')
+     n.fnt3←⎕NEW'Font'(,⊂'Pname' 'Georgia')
+
+     n.theForm.FontObj←n.fnt2
+     n.tip←n.theForm.⎕NEW'TipField'(,⊂'FontObj'n.fnt3)
+
+     n
+ }

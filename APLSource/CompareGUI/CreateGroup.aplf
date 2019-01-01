@@ -1,0 +1,59 @@
+ CreateGroup←{
+     (n add no)←⍵
+     ∆←''
+     ∆,←⊂'Posn'((add+10),10)
+     ∆,←⊂'Size'(90(n.theForm.Size[1]-20))
+     ∆,←⊂'Caption'('Workspace ',no)
+     rf←('n.grp',no){⍎⍺,'←⍵'}n.theForm.⎕NEW'Group'∆
+
+     ∆←''
+     ∆,←⊂'Posn'(20 10)
+     ∆,←⊂'Caption'('Nickname &',no,':')
+     _←('n.label',no){⍎⍺,'←⍵'}rf.⎕NEW'Label'∆
+
+     ∆←''
+     ∆,←⊂'Text'(15⍴'WS')
+     ∆,←⊂'Posn'(20 90)
+     ∆,←⊂'Size'(⍬ 300)
+     ∆,←⊂'FontObj'n.fnt
+     ∆,←⊂'TipObj'n.tip
+     ∆,←⊂'Tip'('This name is used for the namespace in' '⎕SE.HoldWorkspaces holding that workspace.')
+     rf2←('n.nickname',no){⍎⍺,'←⍵'}rf.⎕NEW'Edit'∆
+     rf2.Size[0]-←3
+     rf2.Text←⍎'G.nickname',no
+
+     ∆←''
+     ∆,←⊂'Posn'(20(100+rf2.Size[1]))
+     ∆,←⊂'Size'(⍬ 100)
+     ∆,←⊂'Caption' 'Take WSID'
+     ∆,←⊂'TipObj'n.tip
+     ∆,←⊂'Tip'('Click this button in order to make []WSID (without path) the nickname')
+     rf2←('n.copy',no){⍎⍺,'←⍵'}rf.⎕NEW'Button'∆
+     rf2.onSelect←'OnSelectCopy'no
+
+     ∆←''
+     ∆,←⊂'Posn'(55 5)
+     ∆,←⊂'Size'(⍬(n.theForm.Size[1]-55))
+     ∆,←⊂'FontObj'n.fnt
+     ∆,←⊂'Items'(⍎'G.allPathes',no)
+     ∆,←⊂'SelItems' 1
+     ∆,←⊂'AcceptFiles' 1
+     ∆,←⊂'Style' 'DropEdit'
+     ∆,←⊂'TipObj'n.tip
+     ∆,←⊂'Rows' 5
+     ∆,←⊂'Tip'('You can drag''n & drop a workpace to this control' 'Leave this empty to re-use an already existing namespace in ⎕SE.HoldWorkespaces')
+     rf2←('n.path',no){⍎⍺,'←⍵'}rf.⎕NEW'Combo'∆
+     rf2.Size[0]-←3
+     _←⎕DL 0.1
+     rf2.SelText←1 1
+
+     ∆←''
+     ∆,←⊂'Posn'(55(n.theForm.Size[1]-45))
+     ∆,←⊂'Size'((n.path1.Size[0])⍬)
+     ∆,←⊂'Caption' '...'
+     ∆,←⊂'Accelerator'(120 0)
+     ∆,←⊂'TipObj'n.tip
+     ∆,←⊂'Tip'('Click this button in order to start a file browser' 'Pressing F9 has the same effect')
+     _←('n.btn',no){⍎⍺,'←⍵'}rf.⎕NEW'Button'∆
+     n
+ }

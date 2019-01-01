@@ -1,0 +1,116 @@
+ R←{Parms}Select Path;Filename;Size;Key;a;Z;DQ_R;Data;Allowed;Trash;∆DEBUG;∆STYLE;∆FILTERS;∆CAPTION;∆MODE;⎕TRAP;⎕IO;⎕ML;it;Files;FileBoxForm;∆INDEX
+ :If 0
+⍝⍝ Opens a file box for Read (Default) or Write operation
+⍝⍝ Path may be empty, a path, or a complete filename. A path must end with a backslash character.
+⍝⍝ Note that a single filename may or may not exist! However, if more that one filename is
+⍝⍝ returned, all files will exist.
+⍝⍝ Filters may be defined as shown below:
+⍝⍝ ('Filters' '*.xls;Excel Spreadsheets')
+⍝⍝ ('Filters' '*.xls;Excel-Spreadsheets;*.dws;APL-Workspaces')
+⍝S R becomes a nested vector with three elements
+⍝S [1] Return code. Is ¯1 if the user has cancelled the file selection box.
+⍝S [2] Error hint (in case of an error) or empty vector
+⍝S [3] Depends on the STYLE parameter, which defaults to "Single".
+⍝S     In this case, [3] contains a simple string representing the
+⍝S     selected filename, if any. If STYLE is "Multi", [3] contains a
+⍝S     vector of strings, each representing a selected file.
+⍝S Note that you cannot set Style to "Multi", if Mode is "Write"
+⍝C Copyright APL Team Ltd ⋄ http://www.aplteam.de ⋄ mailto:kai@aplteam.com
+⍝V Version 1.3 from 2011-08-13
+ :EndIf
+ ⎕IO←1
+ ⎕ML←3
+ ⎕TRAP←0⍴⎕TRAP
+ ∆DEBUG←0         ⍝ Setting this to 1 enables debug mode; no :TRAP statement are used!
+ ∆STYLE←'SINGLE'  ⍝ May be "Multi".
+ ∆FILTERS←''      ⍝ Let Windows defines the default
+ ∆CAPTION←''      ⍝ Let Windows defines the default
+ ∆INDEX←1         ⍝ Which filter is to be used initially
+ ∆MODE←'Read'     ⍝ May be "Write"; If Write, Style must be "Single"
+ :Trap 0
+     :If 2=⎕NC'Parms'
+     :AndIf ~0∊⍴Parms
+         :If (≡↑Parms)∊0 1
+         :AndIf 'FILTERS'≡Uppercase↑Parms
+             Parms←⊂Parms
+         :EndIf
+         Allowed←'Debug' 'Filters' 'Caption' 'Style' 'Mode' 'Index'
+         Parms←CheckParms(Parms Allowed)
+         :If 0∊⍴Parms
+             'Invalid Parameters'⎕SIGNAL 11
+         :EndIf
+         Trash←GetVarsFromParms Parms
+     :EndIf
+ :Else
+     R←⎕EN(⊃⎕DM)''
+     :GoTo 0
+ :EndTrap
+ :If 1=∆DEBUG
+     ⎕TRAP←0 'S'
+ :EndIf
+ ∆STYLE←Uppercase ∆STYLE
+ ∆MODE←Uppercase ∆MODE
+ :If ∆STYLE≡'MULTI'
+ :AndIf ∆MODE≡'WRITE'
+     'Invalid settings of STYLE and MODE'⎕SIGNAL 11
+ :EndIf
+ :Trap (∆DEBUG=0)/0
+     :If ~0∊⍴∆FILTERS
+         :If 0 1∊⍨≡∆FILTERS
+             ∆FILTERS←∆FILTERS⊂⍨';'≠∆FILTERS
+             :If 0=2|⍴,∆FILTERS
+                 ∆FILTERS←⊂[2]∆FILTERS⍴⍨2,⍨2÷⍨⍴∆FILTERS
+             :Else
+                 11 ⎕SIGNAL⍨'Domain Error (Filter-Parameter)'
+             :EndIf
+         :Else
+             11 ⎕SIGNAL⍨'Domain Error (Filter-Parameter)'
+         :EndIf
+     :EndIf
+     :If '\'=¯1↑Path
+         Filename←''
+     :Else
+         a←-'\'⍳⍨⌽Path
+         Filename←(a+1)↑Path
+         Path←a↓Path
+     :EndIf
+     Z←⊂'FILEBOX' ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Create the Filebox
+     Z,←⊂'EVENT'('FileBoxOK' 'FileBoxCancel')1
+     Z,←⊂'Index'∆INDEX
+     :If ~0∊⍴Path
+         Z,←⊂'DIRECTORY'Path
+     :EndIf
+     :If ~0∊⍴Filename
+         Z,←⊂'File'Filename
+     :EndIf
+     :If 'MULTI'≡∆STYLE←Uppercase ∆STYLE
+         Z,←⊂'Style' 'Multi'
+     :Else
+         Z,←⊂'Style' 'Single'
+     :EndIf
+     Z,←⊂'Filters'∆FILTERS
+     :If ~0∊⍴∆CAPTION
+         Z,←⊂'Caption'∆CAPTION
+     :EndIf
+     Z,←⊂'FILEMode'∆MODE
+     'FileBoxForm'⎕WC Z
+     DQ_R←⎕DQ'FileBoxForm'
+     :If 'FileBoxCancel'≡2⊃DQ_R
+         R←¯1 '' ''
+     :Else
+         Path←3⊃DQ_R
+         Path←{⍵↓⍨1+-'\'⍳⍨⌽⍵}{2=≡⍵:↑⍵ ⋄ ⍵}Path
+         Files←'FileBoxForm'⎕WG'File'
+         :If ∆STYLE≡'MULTI'
+             :If 1=≡Files
+                 Files←⊂Files
+             :EndIf
+             Files←(⊂Path),¨Files
+         :Else
+             Files←Path,Files
+         :EndIf
+         R←0 ''Files
+     :EndIf
+ :Else
+     R←⎕EN(⊃⎕DM)''
+ :EndTrap
