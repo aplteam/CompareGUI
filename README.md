@@ -1,5 +1,6 @@
 # CompareGUI
 
+CGUI for the Comparison class designed to compare Dyalog APL objects.
 
 CompareGUI is a workspace that contains the code needed by the `]CompareWorkpaces` user command.
 
