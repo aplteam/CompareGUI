@@ -1,11 +1,44 @@
- {r}←{caption}ShowMsg(msg parent);∆;ms
+ {r}←{caption}ShowMsg(msg parent);∆;ms;n2;this;startAt;rf;i
  r←⍬
- caption←'Compare workspaces'{0<⎕NC ⍵:⍺,': ',⍎⍵ ⋄ ⍺}'caption'
- ∆←⊂'MsgBox'
- ∆,←⊂caption
- msg←{↑,/(⎕UCS 10),¨⍵}⍣(|2=≡msg)⊣msg
- ∆,←⊂'Text'msg
- ∆,←⊂'Style' 'Info'
- ∆,←⊂'Event'('MsgBtn1')1
- 'ms'parent.⎕WC ∆
- {}parent.⎕DQ'ms'
+ caption←{0<⎕NC ⍵:⍎⍵ ⋄ 'Compare GUI'}'caption'
+ n2←⎕NS''
+ msg←Nest msg
+
+ ∆←''
+ ∆,←⊂'MaxButton' 0
+ ∆,←⊂'MinButton' 0
+ ∆,←⊂'SysMenu' 0
+ ∆,←⊂'Sizeable' 0
+ ∆,←⊂'Posn'((parent.Posn+50))
+ ∆,←⊂'Size'(300 4000)
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Caption'caption
+ n2.Form←parent.⎕NEW'Form'∆
+
+ startAt←10 10
+ i←¯1
+ :For this :In msg
+     i+←1
+     ∆←''
+     ∆,←⊂'Caption'(i⊃,msg)
+     ∆,←⊂'Posn'startAt
+     rf←n2.Form.⎕NEW'Label'∆
+     ⍎'n2.Label',(¯2↑'00',⍕i),'←rf'
+     startAt[0]+←rf.Size[0]
+ :EndFor
+
+ ∆←''
+ ∆,←⊂'Caption' 'OK'
+ ∆,←⊂'Default' 1
+ ∆,←⊂'Cancel' 1
+ ∆,←⊂'Posn'((55+0⊃AddPosnAndSize rf),10)
+ ∆,←⊂'Size'(⍬ 80)
+ n2.OK←n2.Form.⎕NEW'Button'∆
+ n2.OK.Size[0]+←3
+ n2.OK.onSelect←1
+
+ n2.Form.Size[0]←10+0⊃AddPosnAndSize n2.OK
+ n2.Form.Size[1]←10+(⌈/1⊃¨AddPosnAndSize¨'Label'⎕WN n2.Form)
+
+ ⎕NQ n2.OK'GotFocus' ⋄ {}n2.Form.Wait
+ ⍝Done

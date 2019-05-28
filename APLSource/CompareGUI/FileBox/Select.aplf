@@ -1,4 +1,4 @@
- R←{Parms}Select Path;Filename;Size;Key;a;Z;DQ_R;Data;Allowed;Trash;∆DEBUG;∆STYLE;∆FILTERS;∆CAPTION;∆MODE;⎕TRAP;⎕IO;⎕ML;it;Files;FileBoxForm;∆INDEX
+ R←{Parms}Select Path;Filename;Size;Key;a;Z;DQ_R;Data;Allowed;Trash;∆DEBUG;∆STYLE;∆FILTERS;∆CAPTION;∆MODE;⎕TRAP;⎕IO;⎕ML;it;Files;FileBoxForm;∆INDEX;ref
  :If 0
 ⍝⍝ Opens a file box for Read (Default) or Write operation
 ⍝⍝ Path may be empty, a path, or a complete filename. A path must end with a backslash character.
@@ -93,8 +93,8 @@
          Z,←⊂'Caption'∆CAPTION
      :EndIf
      Z,←⊂'FILEMode'∆MODE
-     'FileBoxForm'⎕WC Z
-     DQ_R←⎕DQ'FileBoxForm'
+     ref←⍎'FileBoxForm'⎕WC Z
+     DQ_R←⎕DQ ref
      :If 'FileBoxCancel'≡2⊃DQ_R
          R←¯1 '' ''
      :Else

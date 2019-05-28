@@ -1,22 +1,23 @@
  OnOkay←{
 ⍝ Check input and report problems, if any
+
      ws1←'_',n.nickname1.Text
      msg←'Nickname 1 is not a valid APL name!'
-     ¯1=⎕NC ws1:{0}ShowMsg msg
+     ¯1=⎕NC ws1:{0}ShowMsg msg n.theForm
 
      ws2←'_',n.nickname2.Text
      msg←'Nickname 2 is not a valid APL name!'
-     ¯1=⎕NC ws2:{0}ShowMsg msg
+     ¯1=⎕NC ws2:{0}ShowMsg msg n.theForm
 
      p1←n.path1.Text
      msg←'Not found: ',p1
      flag←{0∊⍴⍵:0 ⋄ ~##.FilesAndDirs.Exists ⍵}p1
-     flag:{0}ShowMsg msg
+     flag:{0}ShowMsg msg n.theForm
 
      p2←n.path2.Text
      msg←'Not found: ',p2
      flag←{0∊⍴⍵:0 ⋄ ~##.FilesAndDirs.Exists ⍵}p2
-     flag:{0}ShowMsg msg
+     flag:{0}ShowMsg msg n.theForm
      ⎕THIS.∆OK←1
      {0}⎕NQ(0⊃⍵)9999             ⍝ All is fine, so let's quit ⎕DQ
  }
