@@ -1,6 +1,0 @@
- {r}←History
- r←⍬
-⍝ * Version 1.3.2
-⍝   * Call to `ShowMsg` was faulty. Made "CompareGUI" crash in case a WS could not be found.
-⍝\\
-⍝ For information regarding older versions see <https://github.com/aplteam/CompareGUI/releases>

@@ -2,6 +2,8 @@
      no←⍺
      txt←⍎'n.path',no,'.Text'
      rf←⍎'n.nickname',no
-     rf.Text←GetWsidFrom txt
+     buff←GetWsidFrom txt
+     buff←'_'@({⍸¯1=↑¨⎕NC¨'_',¨⍵}buff)⊣buff ⍝ make sure the name is a valid APL name
+     rf.Text←buff
      ⍬
  }

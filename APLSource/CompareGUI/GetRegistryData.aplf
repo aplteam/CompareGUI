@@ -1,14 +1,15 @@
- r←GetRegistryData;rp
+ r←GetRegistryData;rp;WReg
  rp←GetRegistryPath
+ WReg←##.WinReg
  r←⎕NS''
- r.posn←⍎'⍬ ⍬'##.WinReg.GetString rp,'Posn'
- :If 2=≡r.path1←r.allPathes1←''##.WinReg.GetString rp,'path1'
+ r.posn←⍎'⍬ ⍬'WReg.GetString rp,'Posn'
+ :If 2=≡r.path1←r.allPathes1←''WReg.GetString rp,'path1'
      r.path1←0⊃r.allPathes1
  :EndIf
- :If 2=≡r.path2←r.allPathes2←''##.WinReg.GetString rp,'path2'
+ :If 2=≡r.path2←r.allPathes2←''WReg.GetString rp,'path2'
      r.path2←0⊃r.allPathes2
  :EndIf
- r.nickname1←'WS_1'##.WinReg.GetString rp,'nickname1'
- r.nickname2←'WS_2'##.WinReg.GetString rp,'nickname2'
+ r.nickname1←'WS_1'WReg.GetString rp,'nickname1'
+ r.nickname2←'WS_2'WReg.GetString rp,'nickname2'
  r.⎕FX'r←List' '{⍵,[.5]⍎¨⍵}⎕nl -2'
- ⍝
+⍝Done

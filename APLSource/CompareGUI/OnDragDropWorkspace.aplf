@@ -1,7 +1,7 @@
  OnDragDropWorkspace←{
 ⍝ Handle drag'n & drop of a file (workspace)
      (rf filename)←⍵[0 2]
-     filename←##.APLTreeUtils.Lowercase 0⊃,filename
-     '.dws'{⍺≢(-⍴⍺)↑⍵}filename:{0}ShowMsg'The file is not a workspace'
+     filename←⎕C 0⊃,filename
+     '.dws'{⍺≢(-⍴⍺)↑⍵}filename:{0}ShowMsg'The file is not a workspace'n.theForm
      rf.Text←filename
  }
