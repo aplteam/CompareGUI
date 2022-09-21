@@ -1,4 +1,6 @@
 .acre/
 aplcore
-Dist/
-change_history/
+/Dist/
+CONTINUE.dws
+conga.crash
+/TestResults/

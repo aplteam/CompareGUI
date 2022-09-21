@@ -6,7 +6,7 @@
 
      ∆←''
      ∆,←⊂'Caption' 'Compare with "CompareIt"'
-     f1←~0∊⍴{0::⍬ ⋄ ##.CompareSimple.FindCompareIt ⍵}0
+     f1←0≠≢{0::⍬ ⋄ ##.CompareSimple.FindCompareIt ⍵}0
      ∆,←⊂'Active'f1
      ∆,←⊂'Checked'f1
      _←n.CompareIt←n.CompareMenu.⎕NEW'MenuItem'∆
@@ -14,11 +14,18 @@
 
      ∆←''
      ∆,←⊂'Caption' 'Compare with "Beyond Compare"'
-     f2←~0∊⍴{0::⍬ ⋄ ##.CompareSimple.FindBeyondCompare ⍵}0
+     f2←0≠≢{0::⍬ ⋄ ##.CompareSimple.FindBeyondCompare ⍵}0
      ∆,←⊂'Active'f2
      ∆,←⊂'Checked'(f2∧~f1)
      _←n.BeyondCompare←n.CompareMenu.⎕NEW'MenuItem'∆
      n.BeyondCompare.onSelect←'OnSelectCompareTool'
+
+     ∆←''
+     ∆,←⊂'Caption' 'Create two files'
+     f3←0=+/f1,f2
+     ∆,←⊂'Checked'f3
+     _←n.JustTextFiles←n.CompareMenu.⎕NEW'MenuItem'∆
+     n.JustTextFiles.onSelect←'OnSelectCompareTool'
 
      n.helpMenu←n.MB.⎕NEW'Menu'(,⊂'Caption' '&Help')
 

@@ -1,6 +1,0 @@
-* Version 2.0.0 from 2020-12-17
-  * Requires Dyalog 18.0 Unicode
-  * Does not require `APLTreeUtils` anymore but `APLTreeUtils2` instead
-  * All dependencies must be Tatin compatible
-* Version 1.3.2
-  * Call to `ShowMsg` was faulty. Made "CompareGUI" crash in case a WS could not be found.

@@ -1,0 +1,58 @@
+ Make;M;C;name;targetPath;myUCMDsFolder;version;tempFolder;sourceFolder;question;flag;zipFilename
+⍝ * 3.0.0 from 2022-09-21
+⍝   * Now using ⎕se.MakeHelpers
+⍝   * Integrated into the project itself
+⍝ * 2.0.1 from 2021-01-28
+⍝   * Fully compatible with Tatin now
+⍝ * 2.0.0 from 2020-11-15
+⍝   * Dyalog 18.0 Unicode is required now
+⍝ * 1.2.0 from 2019-05-28
+⍝   * Now using `Maker`
+⍝ * 1.1.0 from 2019-01-01
+ ⎕IO←1 ⋄ ⎕ML←1
+ M←⎕SE.MakeHelpers
+ C←##.CiderConfig
+ name←'CompareGUI'
+ ('Project <',name,'> is not currently open')Assert(⊂'#.',name)∊{⍵[;1]}1↓⎕SE.Link.Status''
+ {}⎕SE.Cider.CloseProject''  ⍝ Precaution
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+ targetPath←C.HOME,'/Dist/'
+ tempFolder←M.##.F.GetTempSubDir name
+ 3 ⎕MKDIR tempFolder,'/packages'
+ ⎕WSID←tempFolder,'/',name,'.dws'
+ myUCMDsFolder←M.GetMyUCMDsFolder''
+ sourceFolder←C.HOME,'/',C.CIDER.source
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+ version←⍎'#.',name,'.',name,'.Version'
+ M.RecreateFolder targetPath
+ :If ⎕NEXISTS myUCMDsFolder,'/CompareWorkspaces.dyalog'
+     M.CopyBetter(myUCMDsFolder,'/CompareWorkspaces.dyalog')(sourceFolder,'/CompareWorkspaces.dyalog')'User command version' 'APL Code'
+ :EndIf
+ {}M.IncreaseBuildID'#.',name,'.',name,'.Version'
+ ⎕LX←''
+ ⎕EX'M' ⍝ Required in order to avoid "Session namespace is referenced by #"
+ 0 ⎕SAVE ⎕WSID
+ #.⎕EX #.⎕NL⍳16
+ '#.CompareGUI.CompareGUI'#.⎕CY ⎕WSID
+ 0 ⎕SAVE ⎕WSID
+ M←⎕SE.MakeHelpers
+ (sourceFolder,'/CompareWorkspaces.dyalog')M.CopyTo tempFolder,'/'
+ (C.HOME,'/README.md')M.CopyTo tempFolder,'/'
+ (C.HOME,'/packages')M.CopyTo tempFolder,'/'
+ zipFilename←M.CreateZipFile name tempFolder(2⊃version)
+ targetPath ⎕NMOVE⊣zipFilename
+ flag←⎕NEXISTS myUCMDsFolder,'/',name,'.dws'  ⍝ old (prior version 3)
+ flag∨←⎕NEXISTS myUCMDsFolder,'/',name,'/',name,'.dws'
+ question←((1+flag)⊃'Install' 'Update'),' the user command in MyUCMDs\?'
+ :If 1 M.YesOrNo question
+     1 ⎕NDELETE myUCMDsFolder,'/CompareWorkspaces.dyalog'
+     1 ⎕NDELETE myUCMDsFolder,'/CompareGUI/CompareGUI.dws'             ⍝ Left-over from earlier version (prior 3.0)?!
+     (tempFolder,'/CompareWorkspaces.dyalog')M.CopyTo myUCMDsFolder,'/'
+     M.RecreateFolder myUCMDsFolder,'/CompareGUI/'
+     (tempFolder,'/',name,'.dws')M.CopyTo myUCMDsFolder,'/CompareGUI/'
+     (tempFolder,'/packages')M.CopyTo myUCMDsFolder,'/CompareGUI/'
+ :EndIf
+ M.##.F.RmDir tempFolder
+ ⎕←'Clearing the workspace...'
+ ⎕CLEAR
+⍝Done

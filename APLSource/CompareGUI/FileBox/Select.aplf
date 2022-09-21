@@ -31,7 +31,7 @@
      :If 2=⎕NC'Parms'
      :AndIf ~0∊⍴Parms
          :If (≡↑Parms)∊0 1
-         :AndIf 'FILTERS'≡Uppercase↑Parms
+         :AndIf 'FILTERS'≡1 ⎕C↑Parms
              Parms←⊂Parms
          :EndIf
          Allowed←'Debug' 'Filters' 'Caption' 'Style' 'Mode' 'Index'
@@ -48,8 +48,8 @@
  :If 1=∆DEBUG
      ⎕TRAP←0 'S'
  :EndIf
- ∆STYLE←Uppercase ∆STYLE
- ∆MODE←Uppercase ∆MODE
+ ∆STYLE←1 ⎕C ∆STYLE
+ ∆MODE←1 ⎕C ∆MODE
  :If ∆STYLE≡'MULTI'
  :AndIf ∆MODE≡'WRITE'
      'Invalid settings of STYLE and MODE'⎕SIGNAL 11
@@ -83,7 +83,7 @@
      :If ~0∊⍴Filename
          Z,←⊂'File'Filename
      :EndIf
-     :If 'MULTI'≡∆STYLE←Uppercase ∆STYLE
+     :If 'MULTI'≡∆STYLE←1 ⎕C ∆STYLE
          Z,←⊂'Style' 'Multi'
      :Else
          Z,←⊂'Style' 'Single'

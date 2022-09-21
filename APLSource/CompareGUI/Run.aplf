@@ -1,4 +1,9 @@
- Run;key;name1;name2;p;WS1;WS2;ref1;ref2;form;n;G;cs;ref;flag
+ Run homePath;key;name1;name2;p;WS1;WS2;ref1;ref2;form;n;G;cs;ref;flag
+ :If 0=##.⎕NC'Compare'
+ :AndIf 0<≢homePath
+     ⍝ When running as a user command we must make sure that all required packages are available
+     ⎕SE.Tatin.LoadDependencies (homePath,'/packages') ##
+ :EndIf
  G←GetRegistryData
  :If (⎕SE.⎕NC'HoldWorkspaces')∊(1+⍳16)~9
      '⎕SE.HoldWorkspaces already exists but is not a namespace'⎕SIGNAL 11
@@ -23,7 +28,9 @@
          :EndIf
          #.CursorObj←0
          n.info.Text←'Processing...'
-         ##.Compare.compareTool←↑n.(CompareIt BeyondCompare).Checked/'CompareIt!' 'BeyondCompare'
+         :If 2>⍸n.(CompareIt BeyondCompare JustTextFiles).Checked
+             ##.Compare.compareTool←↑n.(CompareIt BeyondCompare).Checked/'CompareIt!' 'BeyondCompare'
+         :EndIf
          ##.Compare.Merge⍎'⎕SE.HoldWorkspaces.(',(↑{⍺,' ',⍵}/G.(nickname1 nickname2)),('(',(⍕⍴'⎕se.HoldWorkspaces._'),')'),')'
          ⎕←'Both workspaces are still available in ⎕SE.HoldWorkspaces!'
          ⎕←'In order to get rid of them execute:'

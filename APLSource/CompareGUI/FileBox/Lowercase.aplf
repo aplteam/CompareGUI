@@ -1,8 +1,0 @@
- array←Lowercase array;ToLower;⎕IO
- 'ToLower'⎕NA'I4 USER32.C32|CharLower',('*A'⊃⍨1+12>{⍎⍵↑⍨¯1+⍵⍳'.'}2⊃'.'⎕WG'APLVersion'),' =0T'
- ⎕IO←1
- :If ~0 1∊⍨≡array
-     array←{(⍴⍵)⍴2⊃ToLower⊂,⍵}¨array
- :Else
-     array←(⍴array)⍴2⊃ToLower⊂,array
- :EndIf

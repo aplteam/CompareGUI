@@ -28,12 +28,12 @@
          R←''                   ⍝ Structur invalid, get out!
      :Else
          Buffer←((⌊0.5×⍴Parms),2)⍴Parms ⍝ Build a matrix
-         Buffer[;1]←(⊂[2]Uppercase⊃Buffer[;1])~¨' '
+         Buffer[;1]←(⊂[2]1 ⎕C⊃Buffer[;1])~¨' '
          :If (|≡Allowed)∊0 1    ⍝ Jump if Allowed is not simple
              Allowed←⊂Allowed   ⍝ Enforce nested
          :EndIf
          Allowed←,Allowed       ⍝ Enforce a vector
-         Allowed←Uppercase¨Allowed
+         Allowed←1 ⎕C¨Allowed
          Bool←Buffer[;1]∊Allowed  ⍝ Column 1 must be member of Allowed
          :If 1∨.≠Bool
              ('Invalid Parameter: ',1↓↑,/' ',¨(~Bool)/Buffer[;1])⎕SIGNAL 11

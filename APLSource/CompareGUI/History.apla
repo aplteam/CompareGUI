@@ -1,0 +1,16 @@
+(
+ '* Version 3.0.0 from 2022-09-21'
+ '  * Updated to latest versions of Compare and CompareSimple (Breaking changes)'
+ '  * Requires the ]CompareFiles user command now'
+ '  * Now cooperates with Link'
+ '  * Internal change: new "Make"'
+ '* Version 2.1.0 from 2021-01-28'
+ '  * Rather than calling one of the supported external comparison tools one now let CompareGUI just'
+ '    create two text files. '
+ '* Version 2.0.0 from 2020-12-17'
+ '  * Requires Dyalog 18.0 Unicode'
+ '  * Does not require `APLTreeUtils` anymore but `APLTreeUtils2` instead'
+ '  * All dependencies must be Tatin compatible'
+ '* Version 1.3.2'
+ '  * Call to `ShowMsg` was faulty. Made "CompareGUI" crash in case a WS could not be found.'
+)

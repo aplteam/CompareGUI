@@ -1,7 +1,8 @@
  OnSelectCompareTool←{
      rf←0⊃⍵
-     ind←n.(BeyondCompare CompareIt)⍳rf
-     (ind⊃n.(CompareIt BeyondCompare)).Checked←0
-     (n.(CompareIt BeyondCompare)~ind⊃n.(CompareIt BeyondCompare)).Checked←1
+     ind←n.(BeyondCompare CompareIt JustTextFiles)⍳rf
+     n.(CompareIt BeyondCompare JustTextFiles).Checked←0
+     ref←ind⊃n.(CompareIt BeyondCompare JustTextFiles)
+     ref.Checked←1
      ⍬
  }

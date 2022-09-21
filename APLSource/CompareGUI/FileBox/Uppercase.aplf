@@ -1,8 +1,0 @@
- array←Uppercase array;ToUpper;⎕IO
- 'ToUpper'⎕NA'I4 USER32.C32|CharUpper',('*A'⊃⍨1+12>{⍎⍵↑⍨¯1+⍵⍳'.'}2⊃'.'⎕WG'APLVersion'),' =0T'
- ⎕IO←1
- :If ~0 1∊⍨≡array
-     array←{(⍴⍵)⍴2⊃ToUpper⊂,⍵}¨array
- :Else
-     array←(⍴array)⍴2⊃ToUpper⊂,array
- :EndIf
