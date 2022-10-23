@@ -1,0 +1,26 @@
+ R←Test_Misc_001(stopFlag batchFlag);⎕TRAP
+⍝ Tests just the basics with the help of a user
+ ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ :If batchFlag
+     R←T._NoBatchTest
+     :Return
+ :EndIf
+
+ ⎕←(⎕PW-1)⍴'-'
+ ⎕←'This test needs you: when a GUI pops up...'
+ ⎕←' 1. click the "OK" button'
+ ⎕←' 2. select the last line '
+ ⎕←' 3. press "="'
+ ⎕←' 4. Finally close all three dialog boxes'
+ 0 0⍴⍞,0/⎕←'To continue press <enter>'
+
+ ##.CompareGUI.Run''
+
+ →T.GoToTidyUp 0=1 C.YesOrNo'Did it all work as expected?'
+
+ R←T._OK
+
+∆TidyUp:
+ ⎕SE.⎕EX'HoldWorkspaces'

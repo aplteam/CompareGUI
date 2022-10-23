@@ -1,0 +1,4 @@
+ Cleanup
+ ⎕EX'C'
+ ⎕SE.⎕EX'HoldWorkspaces'
+⍝Done

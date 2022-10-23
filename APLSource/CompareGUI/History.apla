@@ -1,4 +1,6 @@
 (
+ '* Version 3.0.1 from 2022-10-22'
+ '  * Wrong package CompareSimple installed'
  '* Version 3.0.0 from 2022-09-21'
  '  * Updated to latest versions of Compare and CompareSimple (Breaking changes)'
  '  * Requires the ]CompareFiles user command now'

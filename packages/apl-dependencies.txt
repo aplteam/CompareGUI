@@ -1,3 +1,4 @@
 aplteam-FilesAndDirs-5.1.5
 aplteam-WinReg-5.0.4
-aplteam-Compare-6.0.0-rc-1
+aplteam-Compare-6.0.0
+aplteam-CompareSimple-6.0.0
