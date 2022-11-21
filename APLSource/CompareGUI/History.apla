@@ -1,4 +1,6 @@
 (
+ '* Version 3.0.2 from 2022-11-21'
+ '  * One more problem with package dependencies fixed caused by a Tatin bug'
  '* Version 3.0.1 from 2022-10-22'
  '  * Wrong package CompareSimple installed'
  '* Version 3.0.0 from 2022-09-21'
