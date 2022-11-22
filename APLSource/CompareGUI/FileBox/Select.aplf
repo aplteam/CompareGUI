@@ -29,21 +29,20 @@
  ∆MODE←'Read'     ⍝ May be "Write"; If Write, Style must be "Single"
  :Trap 0
      :If 2=⎕NC'Parms'
-     :AndIf ~0∊⍴Parms
+     :AndIf 0≠≢Parms
          :If (≡↑Parms)∊0 1
          :AndIf 'FILTERS'≡1 ⎕C↑Parms
              Parms←⊂Parms
          :EndIf
          Allowed←'Debug' 'Filters' 'Caption' 'Style' 'Mode' 'Index'
          Parms←CheckParms(Parms Allowed)
-         :If 0∊⍴Parms
+         :If 0=≢Parms
              'Invalid Parameters'⎕SIGNAL 11
          :EndIf
          Trash←GetVarsFromParms Parms
      :EndIf
  :Else
-     R←⎕EN(⊃⎕DM)''
-     :GoTo 0
+     →0,R←⎕EN(⊃⎕DM)''
  :EndTrap
  :If 1=∆DEBUG
      ⎕TRAP←0 'S'
@@ -55,7 +54,7 @@
      'Invalid settings of STYLE and MODE'⎕SIGNAL 11
  :EndIf
  :Trap (∆DEBUG=0)/0
-     :If ~0∊⍴∆FILTERS
+     :If 0≠≢∆FILTERS
          :If 0 1∊⍨≡∆FILTERS
              ∆FILTERS←∆FILTERS⊂⍨';'≠∆FILTERS
              :If 0=2|⍴,∆FILTERS
@@ -77,10 +76,10 @@
      Z←⊂'FILEBOX' ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Create the Filebox
      Z,←⊂'EVENT'('FileBoxOK' 'FileBoxCancel')1
      Z,←⊂'Index'∆INDEX
-     :If ~0∊⍴Path
+     :If 0≠≢Path
          Z,←⊂'DIRECTORY'Path
      :EndIf
-     :If ~0∊⍴Filename
+     :If 0≠≢Filename
          Z,←⊂'File'Filename
      :EndIf
      :If 'MULTI'≡∆STYLE←1 ⎕C ∆STYLE
@@ -89,7 +88,7 @@
          Z,←⊂'Style' 'Single'
      :EndIf
      Z,←⊂'Filters'∆FILTERS
-     :If ~0∊⍴∆CAPTION
+     :If 0≠≢∆CAPTION
          Z,←⊂'Caption'∆CAPTION
      :EndIf
      Z,←⊂'FILEMode'∆MODE

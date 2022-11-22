@@ -1,4 +1,10 @@
 (
+ '* Version 3.0.3 from 2022-11-22'
+ '  * The GUI now offers the option to ignore a namespace _tatin'
+ '  * Bug fixes'
+ '    * The row in the comparison list that was highlighted was NOT really the current row; that'
+ '      became apparent once a cursor key was pressed'
+ '    * Clicking the "Take WSID" button resulted in a VALUE ERROR.'
  '* Version 3.0.2 from 2022-11-21'
  '  * One more problem with package dependencies fixed caused by a Tatin bug'
  '* Version 3.0.1 from 2022-10-22'

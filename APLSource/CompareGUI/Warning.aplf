@@ -2,7 +2,7 @@
  r←⍬
  :If 0=⎕NC'⎕SE.HoldWorkspaces'
      msg←''
-     msg,←⊂'Note that this application will create a namespace'
+     msg,←⊂'Note that "CompareGUI" will create a namespace'
      msg,←⊂'⎕SE.HoldWorkspaces.'
      ShowMsg msg n.theForm
  :EndIf

@@ -4,17 +4,16 @@
  :Repeat
      res←n.nickname1 DQ_ name
      :If 0=res
-         r←0
-         :Return
+         →r←0
      :Else
          :If 0<∆CANCEL+∆OK
              r←∆OK
-             :If 0∊⍴n.path1.Text
+             :If 0=≢n.path1.Text
                  flag←9=⎕SE.HoldWorkspaces.⎕SE n.nickname1.Text
              :Else
                  flag←1
              :EndIf
-             :If 0∊⍴n.path2.Text
+             :If 0=≢n.path2.Text
                  flag∧←9=⎕SE.HoldWorkspaces.⎕NC n.nickname2.Text
              :Else
                  flag∧←1

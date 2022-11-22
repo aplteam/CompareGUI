@@ -4,13 +4,13 @@
  :Repeat
      :Trap 12
          ⎕NQ focusTo'GotFocus' ⋄ buff←⎕DQ name
-         :If ~0∊⍴buff
+         :If 0≠≢buff
              res←9999=1⊃buff
          :EndIf
          flag←1
      :Else
         ⍝ We are suffering from spourious SYNTAX ERRORs in ⎕DQ which are
-        ⍝ related to moving the mouse but withour apparent reason.
-        ⍝ Therefore we trap those - not ideal but it's not reproducible.
+        ⍝ related to moving the mouse but without apparent reason.
+        ⍝ Therefore we trap those - not ideal, but it's not reproducible.
      :EndTrap
  :Until flag

@@ -7,10 +7,10 @@
      :Else
          ref←⎕SE.HoldWorkspaces                 ⍝ Already there, so we point at it
      :EndIf
-     :If ~0∊⍴G.path1                            ⍝ Empty means: use what we already got
+     :If 0≠≢G.path1                            ⍝ Empty means: use what we already got
          ⎕SE.HoldWorkspaces.⎕EX G.nickname1     ⍝ Delete leftovers
      :EndIf
-     :If ~0∊⍴G.path2
+     :If 0≠≢G.path2
          ⎕SE.HoldWorkspaces.⎕EX G.nickname2     ⍝ Delete leftovers
      :EndIf
  :EndIf
