@@ -1,6 +1,6 @@
  success←CopyWorkspaces ref;into
  success←1
- :If 0∊⍴G.path1
+ :If 0=≢G.path1
      into←⍎'⎕SE.HoldWorkspaces.',G.nickname1
  :Else
      into←⍎G.nickname1 ref.⎕NS''
@@ -14,7 +14,7 @@
      :EndTrap
  :EndIf
 
- :If 0∊⍴G.path2
+ :If 0=≢G.path2
      into←⍎'⎕SE.HoldWorkspaces.',G.nickname2
  :Else
      into←⍎G.nickname2 ref.⎕NS''

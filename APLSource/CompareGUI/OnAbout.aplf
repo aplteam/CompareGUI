@@ -3,7 +3,7 @@
      msg←''
      msg,←⊂'This application is a GUI cover for the #.Compare class.'
      msg,←⊂'For details refer to the GitHub repository:'
-     msg,←⊂'https://github.com/apl-cation/CompareGUI'
+     msg,←⊂'https://github.com/aplteam/CompareGUI'
      msg,←⊂''
      msg,←⊂'Version ',1⊃Version
      msg,←⊂'Written by Kai Jaeger'

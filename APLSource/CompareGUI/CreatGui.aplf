@@ -9,6 +9,7 @@
  n←CreateGroup n 100 '2'
  n.info.Text←'Note that drag-and-drop of filenames is supported on the paths fields'
  n←CreatePushButton n
+ n←CreateIgnoreTatinCheckbox n
 
  n.(nickname1 nickname2 path1 path2).onGotFocus←⊂'OnNicknameGotFocus'
  n.(nickname1 nickname2 path1 path2).onLostFocus←⊂'OnNicknameLostFocus'

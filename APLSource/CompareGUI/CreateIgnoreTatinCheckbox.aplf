@@ -1,0 +1,10 @@
+ n←CreateIgnoreTatinCheckbox n;∆;buff
+⍝ Create a check box "Ignore Tatin packages"
+ ∆←''
+ ∆,←⊂'Caption' '&Ignore Tatin packages'
+ ∆,←⊂'State' 1
+ ∆,←⊂'Style' 'Check'
+ n.IgnoreTatin←n.theForm.⎕NEW'Button'∆
+ buff←0.5×n.theForm.Size[1]-1⊃+⌿⊃n.(okay cancel).Size
+ n.IgnoreTatin.Posn←(n.okay.Posn[0]),buff
+ ⍝

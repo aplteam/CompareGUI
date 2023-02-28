@@ -1,17 +1,7 @@
  CreateMenu←{
      n←⍵
      n.MB←n.theForm.⎕NEW⊂'MenuBar'
-
-     n.CompareMenu←n.MB.⎕NEW'Menu'(,⊂'Caption' 'Options')
-
-     ∆←''
-     ∆,←⊂'Caption' 'Ignore #._tatin'
-     ∆,←⊂'Checked' 1
-     _←n.IgnoreTatin←n.CompareMenu.⎕NEW'MenuItem'∆
-     n.IgnoreTatin.onSelect←'OnToggleIgnoreTatin'
-
      n.helpMenu←n.MB.⎕NEW'Menu'(,⊂'Caption' '&Help')
-
      _←n.about←n.helpMenu.⎕NEW'MenuItem'(,⊂'Caption' 'About')
      n.about.onSelect←'OnAbout'
      n

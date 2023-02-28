@@ -2,9 +2,10 @@
  r←⍬
  #.CursorObj←0
  msg←''
- msg,←⊂'The workspace:'
+ msg,←⊂'Copying this workspace:'
  msg,←⊂'  ',path
- msg,←⊂'was saved with a later version of Dyalog and'
- msg,←⊂'can therefore not be processed!'
+ msg,←⊂'failed, most likely because it was'
+ msg,←⊂'saved with an incompatible version'
+ msg,←⊂'of Dyalog APL.'
  ShowMsg msg n.theForm
 ⍝Done

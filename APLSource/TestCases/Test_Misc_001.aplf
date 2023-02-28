@@ -1,5 +1,5 @@
  R←Test_Misc_001(stopFlag batchFlag);⎕TRAP
-⍝ Tests just the basics with the help of a user
+⍝ Tests the basics of CompareGUI.Run with the help of a user
  ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
  R←T._Failed
 

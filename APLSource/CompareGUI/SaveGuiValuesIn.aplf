@@ -6,6 +6,6 @@
      r.path1←n.path1.Text
      r.path2←n.path2.Text
      r.posn←n.theForm.Posn
-     r.ignoreTatin←n.IgnoreTatin.Checked
+     r.ignoreTatin←n.IgnoreTatin.State
      r
  }

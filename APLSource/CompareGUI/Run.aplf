@@ -1,4 +1,4 @@
- Run homePath;key;name1;name2;p;WS1;WS2;ref1;ref2;form;n;G;cs;ref
+ Run homePath;key;name1;name2;p;WS1;WS2;ref1;ref2;form;n;G;cs;ref;buff;parms
  :If 0=##.⎕NC'Compare'
  :AndIf 0<≢homePath
      ⍝ When running as a user command we must make sure that all required packages are available
@@ -20,13 +20,21 @@
      SavePropsInRegistry
      G←SaveGuiValuesIn n G
      ref←ProcessPaths ⍬
-     {}CopyWorkspaces ref
-     #.CursorObj←0
-     n.info.Text←'Processing...'
-     ##.Compare.Merge⍎'⎕SE.HoldWorkspaces.(',(↑{⍺,' ',⍵}/G.(nickname1 nickname2)),('), ',(⍕⍴'⎕se.HoldWorkspaces._'),' ',(⍕G.ignoreTatin))
-     ⎕NQ n.theForm'Close'
-     ⎕←'Both workspaces are still available in ⎕SE.HoldWorkspaces!'
-     ⎕←'In order to get rid of them execute:'
-     ⎕←')erase  ⎕SE.HoldWorkspaces'
+     :If CopyWorkspaces ref
+         #.CursorObj←0
+         n.info.Text←'Processing...'
+         buff←⎕SE.HoldWorkspaces⍎¨G.(nickname1 nickname2)
+         parms←##.Compare.CreateMergeParms
+         parms.readOnly←1 1
+         parms.ignoreTatin←G.ignoreTatin
+         parms.refsAreRubbish←1
+         parms ##.Compare.Merge buff
+         ⎕NQ n.theForm'Close'
+         ⎕←'Both workspaces are still available in ⎕SE.HoldWorkspaces!'
+         ⎕←'In order to get rid of them execute:'
+         ⎕←')erase  ⎕SE.HoldWorkspaces'
+     :Else
+         ⎕SE.⎕EX'HoldWorkspaces'
+     :EndIf
  :EndIf
 ⍝Done
