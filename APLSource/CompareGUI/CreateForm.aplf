@@ -2,7 +2,7 @@
      n←⍵
      ∆←''
      ∆,←⊂'Coord' 'Pixel'
-     ∆,←⊂'Posn'(⍬ ⍬)
+     ∆,←⊂'Posn'(60 50)
      ∆,←⊂'Size'(265 700)
      ∆,←⊂'MaxButton' 0
      ∆,←⊂'Caption' 'Compare / merge workspaces'

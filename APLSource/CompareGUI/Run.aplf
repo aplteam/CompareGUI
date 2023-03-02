@@ -28,6 +28,8 @@
          parms.readOnly←1 1
          parms.ignoreTatin←G.ignoreTatin
          parms.refsAreRubbish←1
+         parms.dropFromTitle←(1+≢'⎕SE.HoldWorkspaces.')  ⍝ +1 because of the leading "_"
+         parms.n←n
          parms ##.Compare.Merge buff
          ⎕NQ n.theForm'Close'
          ⎕←'Both workspaces are still available in ⎕SE.HoldWorkspaces!'
