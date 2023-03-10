@@ -1,9 +1,8 @@
  SavePropsInRegistry;rp
  rp←GetRegistryPath
- ##.WinReg.PutString(rp,'nickname1')n.nickname1.Text
- ##.WinReg.PutString(rp,'nickname2')n.nickname2.Text
- ##.WinReg.PutString(rp,'path1')(∪(⊂n.path1.Text),n.path1.Items)
- ##.WinReg.PutString(rp,'path2')(∪(⊂n.path2.Text),n.path2.Items)
- ##.WinReg.PutString(rp,'Posn')(⍕n.theForm.Posn)
-
-⍝
+ WinReg.PutString(rp,'nickname1')n.nickname1.Text
+ WinReg.PutString(rp,'nickname2')n.nickname2.Text
+ WinReg.PutString(rp,'path1')(∪(⊂n.path1.Text),n.path1.Items)
+ WinReg.PutString(rp,'path2')(∪(⊂n.path2.Text),n.path2.Items)
+ WinReg.PutString(rp,'Posn')(⍕n.theForm.Posn)
+⍝Done

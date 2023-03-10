@@ -1,3 +1,3 @@
  r←Version
 ⍝ See also `History`
- r←'CompareGUI' '4.0.0.28' '2023-03-02'
+ r←'CompareGUI' '4.0.0+34' '2023-03-09'

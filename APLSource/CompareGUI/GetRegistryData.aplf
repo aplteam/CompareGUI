@@ -1,6 +1,6 @@
  r←GetRegistryData;rp;WReg
  rp←GetRegistryPath
- WReg←##.WinReg
+ WReg←WinReg
  r←⎕NS''
  r.posn←⍎'⍬ ⍬'WReg.GetString rp,'Posn'
  :If 2=≡r.path1←r.allPathes1←''WReg.GetString rp,'path1'

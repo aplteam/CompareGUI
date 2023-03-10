@@ -14,15 +14,15 @@
       r.Parse←'0'
     ∇
 
-    ∇ r←Run(Cmd Args);browser;cmdparser;cs;ref;⎕IO;⎕ML;path;filename
+    ∇ r←Run(Cmd Args);folder
       :Access Shared Public
       ⎕IO←⎕ML←1
       r←''
-      filename←⎕SE.Tatin.GetMyUCMDsFolder'/CompareGUI/CompareGUI.DWS'
+      folder←⎕SE.Tatin.GetMyUCMDsFolder'/CompareGUI'
       ⎕SE.⎕SHADOW'CompareGUI'
       'CompareGUI'⎕SE.⎕NS''
-      ⎕SE.CompareGUI.⎕CY filename
-      ⎕SE.CompareGUI.CompareGUI.Run 1⊃⎕NPARTS filename
+      {}⎕SE.Tatin.LoadDependencies folder ⎕SE
+      ⎕SE.CompareGUI.Run folder
     ∇
 
     ∇ r←Help Cmd;⎕IO;⎕ML

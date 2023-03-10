@@ -1,6 +1,6 @@
  GetWsidFrom←{
      txt←⍵
-     p←1⊃##.APLTreeUtils2.SplitPath txt
+     p←1⊃APLTreeUtils2.SplitPath txt
      (~'.'∊p):p
-     0⊃'.'##.APLTreeUtils2.Split p
+     0⊃'.'APLTreeUtils2.Split p
  }

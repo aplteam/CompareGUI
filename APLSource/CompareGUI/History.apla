@@ -1,7 +1,8 @@
 (
- '* Version 4.0.0 from 2023-03-02'
+ '* Version 4.0.0 from 2023-03-09'
  '  * With version 4.0.0 this became a Tatin package.                                                     '
  '  * Menu item "ignore Tatin packages" is now a check box'
+ '  * Dependencies updated (classes "Compare" and "CompareSimple") with plenty of improvements'
  '  * Bug fixes'
  '    * In case a WS-copy operation failed (invalid version for example) the failure was ignored'
  '    * Rubbish report had problems'

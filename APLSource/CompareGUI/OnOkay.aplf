@@ -11,12 +11,12 @@
 
      p1←n.path1.Text
      msg←'Not found: ',p1
-     flag←{0=≢⍵:0 ⋄ ~##.FilesAndDirs.Exists ⍵}p1
+     flag←{0=≢⍵:0 ⋄ ~FilesAndDirs.Exists ⍵}p1
      flag:{0}ShowMsg msg n.theForm
 
      p2←n.path2.Text
      msg←'Not found: ',p2
-     flag←{0=≢⍵:0 ⋄ ~##.FilesAndDirs.Exists ⍵}p2
+     flag←{0=≢⍵:0 ⋄ ~FilesAndDirs.Exists ⍵}p2
      flag:{0}ShowMsg msg n.theForm
      ⎕THIS.∆OK←1
      {0}⎕NQ(0⊃⍵)9999             ⍝ All is fine, so let's quit ⎕DQ
