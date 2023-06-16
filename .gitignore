@@ -1,9 +1,7 @@
-.acre/
 aplcore
 /Dist/
 CONTINUE.dws
 conga.crash
-/TestResults/
 
 /packages/*
 !/packages/apl-dependencies.txt
