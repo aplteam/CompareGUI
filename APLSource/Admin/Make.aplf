@@ -9,6 +9,7 @@
      M.FetchLaterUserCommand'Snippets_UC.dyalog'cfg C('[MyUCMDs]CompareGUI')
      version←M.CompileVersionNumberPattern cfg
      M.RecreateFolder path
+     {}M.CreateAPIfromCFG(⍎'##.',cfg.name)cfg
      parms←⎕SE.Tatin.CreateBuildParms C.HOME
      parms.targetPath←path
      parms.version←version
