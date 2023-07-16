@@ -1,4 +1,6 @@
 (
+ '* Version 4.0.1 from 2023-07-16'
+ '  * New version 7.1.1 of `Compare`'
  '* Version 4.0.0 from 2023-03-09'
  '  * With version 4.0.0 this became a Tatin package.                                                     '
  '  * Menu item "ignore Tatin packages" is now a check box'
