@@ -1,2 +1,10 @@
-Initial
-C←⎕se.CommTools
+ Initial;ns
+ ∆RegData←##.CompareGUI.GetRegistryData
+ ns←⎕NS''
+ ns.nickname1←'New'
+ ns.nickname2←'Old'
+ ns.path1←##.CiderConfig.HOME,'/TestData/ws_new.dws'
+ ns.path2←##.CiderConfig.HOME,'/TestData/ws_old.dws'
+ ns.Posn←'25 25'
+ ##.CompareGUI.SavePropsInRegistry ns
+⍝Done

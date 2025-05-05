@@ -15,8 +15,8 @@
  :If DQ n.theForm
      n.(okay cancel).Active←0
      #.CursorObj←1
-     SavePropsInRegistry
-     G←SaveGuiValuesIn n G
+     SavePropsInRegistry CopyPropsFromGUI2Namespace n
+     G←n SaveGuiValuesIn G
      ref←ProcessPaths ⍬
      :If CopyWorkspaces ref
          #.CursorObj←0

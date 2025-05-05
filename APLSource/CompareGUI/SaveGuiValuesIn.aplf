@@ -1,11 +1,12 @@
  SaveGuiValuesIn←{
 ⍝ Take values from the GUI and save them in ⍵
-     (n r)←⍵        ⍝ Names and G
-     r.nickname1←'_',n.nickname1.Text
-     r.nickname2←'_',n.nickname2.Text
-     r.path1←n.path1.Text
-     r.path2←n.path2.Text
-     r.posn←n.theForm.Posn
-     r.ignoreTatin←n.IgnoreTatin.State
-     r
+⍝ ⍺ is n
+     G←⍵
+     G.nickname1←'_',⍺.nickname1.Text
+     G.nickname2←'_',⍺.nickname2.Text
+     G.path1←⍺.path1.Text
+     G.path2←⍺.path2.Text
+     G.Posn←⍺.theForm.Posn
+     G.ignoreTatin←⍺.IgnoreTatin.State
+     G
  }

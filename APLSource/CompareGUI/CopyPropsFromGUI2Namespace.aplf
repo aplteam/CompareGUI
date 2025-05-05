@@ -1,0 +1,8 @@
+ r←CopyPropsFromGUI2Namespace n
+ r←⎕NS''
+ r.nickname1←n.nickname1.Text
+ r.nickname2←n.nickname2.Text
+ r.path1←∪(⊂n.path1.Text),n.path1.Items
+ r.path2←(∪(⊂n.path2.Text),n.path2.Items)
+ r.Posn←⍕n.theForm.Posn
+⍝Done

@@ -1,4 +1,4 @@
- R←Test_Misc_001(stopFlag batchFlag);⎕TRAP
+ R←Test_Misc_001(stopFlag batchFlag);⎕TRAP;msg
 ⍝ Tests the basics of CompareGUI.Run with the help of a user
  ⎕TRAP←(999 'C' '∘∘∘ ⍝ Deliberate error')(0 'N')
  R←T._Failed
@@ -7,18 +7,18 @@
      R←T._NoBatchTest ⋄ →0
  :EndIf
 
- ⎕←(⎕PW-1)⍴'-'
- ⎕←'This test needs you: when a GUI pops up...'
- ⎕←' 1. Click the "OK" button'
- ⎕←' 2. Close the "Rubbish Report"'
- ⎕←' 3. Select the last line '
- ⎕←' 4. Press "=" - a comparison tool shold pop up'
- ⎕←' 5. Finally close all dialog boxes'
- 0 0⍴⍞,0/⎕←'To continue press <enter>'
+ msg←''
+ msg,←⊂'This test needs you: when a GUI pops up...'
+ msg,←⊂' 1. Click the "OK" button'
+ msg,←⊂' 2. Close the "Rubbish Report"'
+ msg,←⊂' 3. Select the last line '
+ msg,←⊂' 4. Press "=" - a comparison tool shold pop up'
+ msg,←⊂' 5. Finally close all dialog boxes'
+ CommTools.Pause msg
 
  1 ##.CompareGUI.Run''
 
- →T.GoToTidyUp 0=1 C.YesOrNo'Did it all work as expected?'
+ →T.GoToTidyUp 0=1 CommTools.YesOrNo'Did it all work as expected?'
 
  R←T._OK
 

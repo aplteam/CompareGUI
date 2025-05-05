@@ -5,7 +5,7 @@
      msg,←⊂'For details refer to the GitHub repository:'
      msg,←⊂'https://github.com/aplteam/CompareGUI'
      msg,←⊂''
-     msg,←⊂'Version ',1⊃Version
+     msg,←⊂'Version ',Version
      msg,←⊂'Written by Kai Jaeger'
      ShowMsg msg n.theForm
  }

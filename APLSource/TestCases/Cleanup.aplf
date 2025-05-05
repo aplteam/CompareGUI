@@ -1,4 +1,5 @@
  Cleanup
- ⎕EX'C'
  ⎕SE.⎕EX'HoldWorkspaces'
+ ##.CompareGUI.SavePropsInRegistry ∆RegData
+ ⎕EX'∆RegData'
 ⍝Done
