@@ -1,4 +1,6 @@
 (
+ '* Version 5.1.0 from 2025-05-06'
+ '  * Packages updated'
  '* Version 5.0.0 from 2025-05-06'
  '  * POTENTIALLY BREAKING CHANGE: `Version` now returns a simple char vector.'
  '  * Packages updated'

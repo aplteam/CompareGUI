@@ -12,7 +12,7 @@
  msg,←⊂' 1. Click the "OK" button'
  msg,←⊂' 2. Close the "Rubbish Report"'
  msg,←⊂' 3. Select the last line '
- msg,←⊂' 4. Press "=" - a comparison tool shold pop up'
+ msg,←⊂' 4. Press "=" - a comparison tool should pop up'
  msg,←⊂' 5. Finally close all dialog boxes'
  CommTools.Pause msg
 

@@ -19,5 +19,5 @@
   source: "APLSource/CompareGUI",
   tags: "comparison-tool",
   userCommandScript: "APLSource/CompareWorkspaces.dyalog",
-  version: "5.0.0+44",
+  version: "5.1.0+46",
 }
