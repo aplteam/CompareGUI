@@ -1,6 +1,6 @@
 (
- '* Version 5.0.0 from 2025-05-05'
- '  * POTENTIALLE BREAKING CHANGE: `Version` now returns a simple char vector.'
+ '* Version 5.0.0 from 2025-05-06'
+ '  * POTENTIALLY BREAKING CHANGE: `Version` now returns a simple char vector.'
  '  * Packages updated'
  '* Version 4.0.1 from 2023-07-16'
  '  * New version 7.1.1 of `Compare`'
